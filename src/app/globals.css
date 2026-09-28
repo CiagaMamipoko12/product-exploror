@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* =========================
+   Base
+========================= */
+
 * {
   box-sizing: border-box;
 }
@@ -9,145 +13,323 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background: #f5f7fa;
-  color: #222;
+  background: #f4f8f5;
+  color: #26352d;
 }
 
 body {
   min-height: 100vh;
 }
 
-/* หน้าหลัก */
+/* =========================
+   Main
+========================= */
+
 main {
   width: 90%;
-  max-width: 1100px;
-  margin: 40px auto;
+  max-width: 1150px;
+  margin: 60px auto;
 }
 
-/* หัวข้อ */
+/* =========================
+   Heading
+========================= */
+
 h1 {
-  margin-bottom: 25px;
-  color: #1f6f43;
+  margin: 0 0 35px;
+  color: #285943;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
-/* Form */
+/* =========================
+   Form
+========================= */
+
 form {
-  background: white;
-  padding: 20px;
-  margin-bottom: 25px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  padding: 30px;
+  margin-bottom: 35px;
+
+  border: 1px solid #e1ebe5;
+  border-radius: 16px;
+
+  box-shadow: 0 8px 25px rgba(43, 79, 59, 0.07);
 
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 18px 20px;
   align-items: center;
 }
 
+/* =========================
+   Label
+========================= */
+
 label {
-  font-weight: bold;
+  font-weight: 600;
+  color: #3b5145;
   margin-left: 5px;
 }
 
+/* =========================
+   Input / Select
+========================= */
+
 input,
 select {
-  padding: 9px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 12px 15px;
+
+  border: 1px solid #d5e1da;
+  border-radius: 10px;
+
+  background: #fbfdfc;
+  color: #26352d;
+
   font-size: 15px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+input::placeholder {
+  color: #9aa9a0;
+}
+
+input:hover,
+select:hover {
+  border-color: #aec6b7;
 }
 
 input:focus,
 select:focus {
   outline: none;
-  border-color: #1f6f43;
+  border-color: #5f9f78;
+  background: #ffffff;
+
+  box-shadow: 0 0 0 4px rgba(95, 159, 120, 0.12);
 }
 
-/* ปุ่ม */
+/* =========================
+   Buttons
+========================= */
+
 button {
-  padding: 9px 16px;
+  padding: 12px 22px;
+
   border: none;
-  border-radius: 6px;
-  background: #1f6f43;
+  border-radius: 10px;
+
+  background: #5f9f78;
   color: white;
+
   font-size: 15px;
+  font-weight: 600;
+
   cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 button:hover {
-  background: #185c36;
+  background: #4e8966;
+  transform: translateY(-1px);
+
+  box-shadow: 0 5px 14px rgba(78, 137, 102, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 button:disabled {
-  background: #aaa;
+  background: #b8c2bc;
   cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 }
 
-/* ข้อความแจ้งเตือน */
+/* =========================
+   ปุ่มแก้ไข / ลบ
+========================= */
+
+/* ถ้าเป็น div ที่ครอบปุ่ม */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ป้องกันปุ่มติดกันในตาราง */
+td button+button {
+  margin-left: 14px;
+}
+
+/* ปุ่มลบ */
+button.delete,
+button[data-action="delete"] {
+  background: #d96c63;
+}
+
+button.delete:hover,
+button[data-action="delete"]:hover {
+  background: #c9574e;
+}
+
+/* =========================
+   Alert
+========================= */
+
 span[role="alert"] {
-  color: #d32f2f;
+  color: #c0392b;
   font-size: 14px;
+  margin-left: 4px;
 }
 
 p[role="alert"] {
-  color: #d32f2f;
-  background: #ffecec;
-  padding: 10px;
-  border-radius: 6px;
+  color: #a93226;
+  background: #fff2f0;
+
+  border: 1px solid #f4d0cb;
+  padding: 14px 18px;
+
+  border-radius: 10px;
+  margin: 20px 0;
 }
 
-/* ตารางสินค้า */
+/* =========================
+   Table
+========================= */
+
 table {
   width: 100%;
-  border-collapse: collapse;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
+
+  border-collapse: separate;
+  border-spacing: 0;
+
+  background: #ffffff;
+
+  border: 1px solid #e1ebe5;
+  border-radius: 16px;
+
   overflow: hidden;
+
+  box-shadow: 0 8px 25px rgba(43, 79, 59, 0.07);
 }
+
+/* =========================
+   Table Header
+========================= */
 
 thead {
-  background: #1f6f43;
-  color: white;
+  background: #5f9f78;
+  color: #ffffff;
 }
 
-th,
-td {
-  padding: 12px 15px;
+th {
+  padding: 17px 20px;
+
   text-align: left;
-  border-bottom: 1px solid #ddd;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  letter-spacing: 0.2px;
+}
+
+/* =========================
+   Table Body
+========================= */
+
+td {
+  padding: 18px 20px;
+
+  text-align: left;
+
+  border-bottom: 1px solid #edf2ee;
+
+  color: #425148;
+
+  line-height: 1.5;
+}
+
+tbody tr {
+  transition: background 0.2s ease;
 }
 
 tbody tr:hover {
-  background: #f1f8f4;
+  background: #f5faf7;
 }
 
-/* ช่องกรอกที่มี Error */
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* =========================
+   Error Input
+========================= */
+
 input[aria-invalid="true"],
 select[aria-invalid="true"] {
-  border-color: #d32f2f;
+  border-color: #d9534f;
+  background: #fffafa;
 }
 
-/* Responsive */
+input[aria-invalid="true"]:focus,
+select[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 4px rgba(217, 83, 79, 0.1);
+}
+
+/* =========================
+   Responsive
+========================= */
+
 @media (max-width: 768px) {
   main {
-    width: 95%;
-    margin: 20px auto;
+    width: 92%;
+    margin: 35px auto;
+  }
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
   }
 
   form {
+    padding: 22px;
+    gap: 14px;
+
     flex-direction: column;
     align-items: stretch;
   }
 
   label {
     margin-left: 0;
+    margin-top: 4px;
   }
 
   input,
   select,
-  button {
+  form>button {
     width: 100%;
+  }
+
+  .action-buttons {
+    gap: 10px;
+  }
+
+  .action-buttons button {
+    flex: 1;
+  }
+
+  td button+button {
+    margin-left: 10px;
   }
 
   table {
@@ -156,18 +338,39 @@ select[aria-invalid="true"] {
 
   th,
   td {
-    padding: 8px;
+    padding: 13px 14px;
   }
 }
 
+/* =========================
+   Mobile
+========================= */
+
 @media (max-width: 480px) {
+  main {
+    width: 94%;
+    margin: 25px auto;
+  }
+
   h1 {
     font-size: 24px;
+    margin-bottom: 22px;
+  }
+
+  form {
+    padding: 18px;
+    border-radius: 13px;
   }
 
   table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+    border-radius: 13px;
+  }
+
+  th,
+  td {
+    padding: 12px;
   }
 }
