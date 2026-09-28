@@ -1,26 +1,173 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  color: #222;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* หน้าหลัก */
+main {
+  width: 90%;
+  max-width: 1100px;
+  margin: 40px auto;
+}
+
+/* หัวข้อ */
+h1 {
+  margin-bottom: 25px;
+  color: #1f6f43;
+}
+
+/* Form */
+form {
+  background: white;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+label {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+input,
+select {
+  padding: 9px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #1f6f43;
+}
+
+/* ปุ่ม */
+button {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #1f6f43;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #185c36;
+}
+
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* ข้อความแจ้งเตือน */
+span[role="alert"] {
+  color: #d32f2f;
+  font-size: 14px;
+}
+
+p[role="alert"] {
+  color: #d32f2f;
+  background: #ffecec;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+/* ตารางสินค้า */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background: #1f6f43;
+  color: white;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background: #f1f8f4;
+}
+
+/* ช่องกรอกที่มี Error */
+input[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border-color: #d32f2f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main {
+    width: 95%;
+    margin: 20px auto;
+  }
+
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  label {
+    margin-left: 0;
+  }
+
+  input,
+  select,
+  button {
+    width: 100%;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
